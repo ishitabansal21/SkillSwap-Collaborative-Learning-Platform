@@ -41,6 +41,10 @@ app.use(express.static('./public'));
 app.use(express.json({ limit: '50mb' }));
 app.use(cors());
 
+// Serve favicon.ico
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile(path.join(__dirname, 'favicon.ico'));
+});
 
 app.use('/api/v1/auth', mainRouter);  // fully implemented 
 app.use('/api/v1/profile', autheticateUser, profileRouter); // fully implemented
